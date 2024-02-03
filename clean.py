@@ -8,6 +8,9 @@ def clean(input_file1,input_file2):
     merged_df.drop('id', axis=1, inplace=True)
     merged_df.dropna(inplace=True)
     merged_df = merged_df[~merged_df['job'].str.contains('insurance|Insurance')]
+
+    print(f"Output file shape: {merged_df.shape}")
+
     return merged_df
 
 
@@ -22,5 +25,3 @@ if __name__ == '__main__':
 
     cleaned = clean(args.input1, args.input2)
     cleaned.to_csv(args.output, index=False)
-
-    print(f"Output file shape: {merged_df.shape}")
